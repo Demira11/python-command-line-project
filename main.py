@@ -1,4 +1,4 @@
-from peewee import SqliteDatabase, Model, CharField
+from peewee import SqliteDatabase, Model, CharField, IntegerField
 import argparse
 
 # Import the 'review' function from flashcards module
@@ -10,8 +10,8 @@ class Flashcard(Model):
     title = CharField()
     question = CharField()
     answer = CharField()
-    correct_count = CharField(default=0)
-    incorrect_count = CharField(default=0)
+    correct_count = IntegerField(default=0)  # Change CharField to IntegerField
+    incorrect_count = IntegerField(default=0)  # Change CharField to IntegerField
 
     class Meta:
         database = db
