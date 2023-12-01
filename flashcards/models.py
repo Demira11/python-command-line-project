@@ -1,7 +1,10 @@
 
 from peewee import SqliteDatabase, Model, CharField, IntegerField
 
-db = SqliteDatabase('flashcards.db')
+db = SqliteDatabase('data/flashcards.db')
+
+
+
 
 class FlashCard(Model):
     front = CharField()
