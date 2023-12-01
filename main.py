@@ -1,4 +1,4 @@
-from peewee import SqliteDatabase, Model, CharField, IntegerField
+from peewee import SqliteDatabase, Model, CharField
 import argparse
 
 # Import the 'review' function from flashcards module
@@ -10,8 +10,8 @@ class Flashcard(Model):
     title = CharField()
     question = CharField()
     answer = CharField()
-    correct_count = IntegerField(default=0)  # Change CharField to IntegerField
-    incorrect_count = IntegerField(default=0)  # Change CharField to IntegerField
+    correct_count = CharField(default=0)
+    incorrect_count = CharField(default=0)
 
     class Meta:
         database = db
@@ -31,6 +31,7 @@ def main():
     parser.add_argument('--train', type=int, help='Start a training session with the specified number of cards')
     parser.add_argument('--list', action='store_true', help='List all flashcards')
     parser.add_argument('--review', type=int, help='Review flashcards with the specified number')
+    parser.add_argument('--stats', action='store_true', help='Show flashcards statistics')
 
     args = parser.parse_args()
 
@@ -44,6 +45,9 @@ def main():
         pass
     elif args.review:
         review(args.review)
+    elif args.stats:
+        # Code for displaying flashcards statistics
+        pass
 
 if __name__ == "__main__":
     main()
