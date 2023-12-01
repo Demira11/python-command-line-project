@@ -1,5 +1,6 @@
 
-# from peewee import SqliteDatabase, Model, CharField, IntegerField
+
+from peewee import IntegerField
 
 from peewee import SqliteDatabase, Model, CharField
 
