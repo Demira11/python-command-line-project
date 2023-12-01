@@ -1,26 +1,31 @@
 
 import argparse
-from models import FlashCard
 
-def create_flashcard(front, back):
-    return FlashCard.create(front=front, back=back)
+def create_flashcard():
+    # Placeholder for creating a new flashcard
+    print("Creating a new flashcard")
 
-
+def train():
+    # Placeholder for starting a training session
+    print("Starting a training session")
 
 def main():
-    parser = argparse.ArgumentParser(description='Flash Cards Command Line Application')
-    parser.add_argument('--create', action='store_true', help='Create a new flashcard')
-    
+    parser = argparse.ArgumentParser(description="Flashcards Command Line Application")
 
+    # Define command-line arguments
+    parser.add_argument('--create', action='store_true', help='Create a new flashcard')
+    parser.add_argument('--train', action='store_true', help='Start a training session')
+
+    # Parse the command-line arguments
     args = parser.parse_args()
 
+    # Check which command was provided
     if args.create:
-        front = input('Enter the question (front of the card): ')
-        back = input('Enter the answer (back of the card): ')
-        create_flashcard(front, back)
-        print('Flashcard created successfully!')
-
-   
+        create_flashcard()
+    elif args.train:
+        train()
+    else:
+        print("No valid command provided. Use --create or --train.")
 
 if __name__ == "__main__":
     main()
