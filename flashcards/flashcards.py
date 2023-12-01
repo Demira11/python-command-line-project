@@ -29,4 +29,10 @@ def train():
         print("Answer:", flashcard.answer)
         input("Press Enter for the next flashcard...")
 
-# Additional functions if any
+def search_flashcards(search_term):
+    return Flashcard.select().where(
+        (Flashcard.title.contains(search_term)) |
+        (Flashcard.question.contains(search_term)) |
+        (Flashcard.answer.contains(search_term))
+    )
+
