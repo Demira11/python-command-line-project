@@ -1,7 +1,6 @@
 # flashcards.py
 
-from peewee import SqliteDatabase, Model, CharField
-import argparse
+from peewee import SqliteDatabase, Model, CharField, IntegerField
 
 db = SqliteDatabase('flashcards.db')
 
@@ -9,8 +8,8 @@ class Flashcard(Model):
     title = CharField()
     question = CharField()
     answer = CharField()
-    correct_count = CharField(default=0)
-    incorrect_count = CharField(default=0)
+    correct_count = IntegerField(default=0)
+    incorrect_count = IntegerField(default=0)
 
     class Meta:
         database = db

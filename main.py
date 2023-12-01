@@ -1,6 +1,29 @@
+from peewee import SqliteDatabase, Model, CharField
 import argparse
-from flashcards.flashcards import create_flashcard, train, list_flashcards
 
+# Import the 'review' function from flashcards module
+from flashcards.flashcards import create_flashcard, train, list_flashcards, review
+
+db = SqliteDatabase('flashcards.db')
+
+class Flashcard(Model):
+    title = CharField()
+    question = CharField()
+    answer = CharField()
+    correct_count = CharField(default=0)
+    incorrect_count = CharField(default=0)
+
+    class Meta:
+        database = db
+
+db.connect()
+db.create_tables([Flashcard])
+
+def create_flashcard(title, question, answer):
+    Flashcard.create(title=title, question=question, answer=answer)
+
+def list_flashcards():
+    return Flashcard.select()
 
 def main():
     parser = argparse.ArgumentParser(description="Flashcards CLI")
@@ -12,13 +35,15 @@ def main():
     args = parser.parse_args()
 
     if args.create:
-        create_flashcard()  # Call your create_flashcard function here
+        # Code for creating a flashcard (similar to what you already have)
+        pass
     elif args.train:
-        train(args.train)  # Call your train function here
+        train(args.train)
     elif args.list:
-        list_flashcards()  # Call your list_flashcards function here
+        # Code for listing flashcards (similar to what you already have)
+        pass
     elif args.review:
-        review_flashcards(args.review)  # Call your review_flashcards function here
+        review(args.review)
 
 if __name__ == "__main__":
     main()
