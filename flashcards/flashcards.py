@@ -1,6 +1,8 @@
 
 
 from peewee import SqliteDatabase, Model, CharField, IntegerField
+import argparse
+
 
 db = SqliteDatabase('flashcards.db')
 
