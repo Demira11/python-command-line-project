@@ -1,4 +1,4 @@
-# flashcards.py
+
 
 from peewee import SqliteDatabase, Model, CharField, IntegerField
 
@@ -9,10 +9,11 @@ class Flashcard(Model):
     question = CharField()
     answer = CharField()
     correct_count = IntegerField(default=0)
-    incorrect_count = IntegerField(default=0)
+    incorrect_count = IntegerField(default=0)  
 
     class Meta:
         database = db
+
 
 db.connect()
 db.create_tables([Flashcard])
