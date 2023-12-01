@@ -4,7 +4,10 @@
 from peewee import SqliteDatabase, Model, CharField
 
 
-db = SqliteDatabase('data/flashcards.db')
+# db = SqliteDatabase('data/flashcards.db')
+
+db = SqliteDatabase('flashcards.db')
+
 
 
 
