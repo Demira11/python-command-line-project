@@ -1,31 +1,23 @@
+# main.py
 
+from flashcards import create_flashcard, train, list_flashcards, search_flashcards
 import argparse
-
-def create_flashcard():
-    # Placeholder for creating a new flashcard
-    print("Creating a new flashcard")
-
-def train():
-    # Placeholder for starting a training session
-    print("Starting a training session")
-
 def main():
-    parser = argparse.ArgumentParser(description="Flashcards Command Line Application")
+    parser = argparse.ArgumentParser(description="Flashcards CLI")
+    parser.add_argument("--create", action="store_true", help="Create a new flashcard")
+    parser.add_argument("--train", action="store_true", help="Start a training session")
+    parser.add_argument("--list", action="store_true", help="List all flashcards")
 
-    # Define command-line arguments
-    parser.add_argument('--create', action='store_true', help='Create a new flashcard')
-    parser.add_argument('--train', action='store_true', help='Start a training session')
-
-    # Parse the command-line arguments
     args = parser.parse_args()
 
-    # Check which command was provided
     if args.create:
         create_flashcard()
     elif args.train:
         train()
+    elif args.list:
+        list_flashcards()
     else:
-        print("No valid command provided. Use --create or --train.")
+        print("Invalid command. Use --create, --train, or --list.")
 
 if __name__ == "__main__":
     main()
