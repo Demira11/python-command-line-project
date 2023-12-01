@@ -1,26 +1,12 @@
-
-
-from peewee import IntegerField
-
-from peewee import SqliteDatabase, Model, CharField
-
-
-# db = SqliteDatabase('data/flashcards.db')
+from peewee import SqliteDatabase, Model, CharField, IntegerField
 
 db = SqliteDatabase('flashcards.db')
 
-
-
-
-
 class FlashCard(Model):
-    front = CharField()
-    back = CharField()
-    correct_answers = IntegerField(default=0)
-    incorrect_answers = IntegerField(default=0)
+    title = CharField()
+    question = CharField()
+    answer = CharField()
+    correct_count = IntegerField(default=0)
 
     class Meta:
         database = db
-
-db.connect()
-db.create_tables([FlashCard])
